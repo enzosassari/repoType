@@ -10,13 +10,9 @@ let arregloA : number [] = new Array (6);
 let arregloB : number [] = new Array (6);
 let arregloSuma : number[] = new Array (6);
 
-for (let i = 0; i < arregloA.length; i++){        //INGRESO DE NUMEROS EN EL ARREGLO A 
+for (let i = 0; i < arregloA.length; i++){        //INGRESO ELEMENTOS EN EL ARREGLO A y B, y los sumo
     arregloA[i] = rls.questionInt ("Ingrese numero de la posicion: "+ i +" del arreglo A: ");
     arregloB[i] = rls.questionInt ("Ingrese numero de la posicion: "+ i +" del arreglo B: ");
-}
-
-
-for (let i = 0; i < arregloA.length; i++) {                      //SUMO Y ASIGNO A LA POSICION DEL ARREGLO SUMA
     arregloSuma[i] = (arregloA[i] + arregloB[i]);
 }
 
