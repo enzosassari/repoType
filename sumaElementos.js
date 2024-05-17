@@ -10,13 +10,11 @@ var arregloB = new Array(6);
 var arregloSuma = new Array(6);
 for (var i = 0; i < arregloA.length; i++) { //INGRESO DE NUMEROS EN EL ARREGLO A 
     arregloA[i] = rls.questionInt("Ingrese numero de la posicion: " + i + " del arreglo A: ");
-}
-for (var i = 0; i < arregloB.length; i++) { //INGRESO DE NUMEROS EN EL ARREGLO B
     arregloB[i] = rls.questionInt("Ingrese numero de la posicion: " + i + " del arreglo B: ");
 }
 for (var i = 0; i < arregloA.length; i++) { //SUMO Y ASIGNO A LA POSICION DEL ARREGLO SUMA
     arregloSuma[i] = (arregloA[i] + arregloB[i]);
 }
 for (var i = 0; i < arregloSuma.length; i++) { // MUESTRO LOS RESULTADOS
-    console.log("La suma del indice: ", i, "es : ", arregloSuma[i]);
+    console.log("La suma de los indices de los arreglos A y B: ", i, "es : ", arregloSuma[i]);
 }
