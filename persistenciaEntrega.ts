@@ -8,9 +8,22 @@ import * as fs from 'node:fs';
 //import fs from 'node:fs' ;
 
 const precios: number[] = [525, 3500, 400, 1999];
-const productos: string[] = ["Leche", "Galletitas", "Harina", "Queso"];
+const productos: string[] = ["Leche", "Galletitas", "Harina", "Queso", "Verduras"];
 
-let i : number ;
+//-----------FUNCION PARA CARGAR LOS TXT---------------------//
+
+function cargarTxt (arrayCarga : string[] | number[]) : string{
+    let i : number;
+    let contenidoArray : string = "";
+
+    for (i=0; i<arrayCarga.length; i++ ){       
+        contenidoArray += arrayCarga[i]+" ";         //guardo los precios y productos en una variable string 
+    }
+
+    return contenidoArray;                             //retorno la variable string con la cadena
+}
+
+/**let i : number ;
 let contenidoPrecios : string = ""; 
 let contenidoProductos : string = ""; 
 
@@ -21,12 +34,24 @@ for (i=0; i<precios.length; i++){ //guardo los precios en una variable string
 for(i=0; i<productos.length;i++){  //guardo los productos en una variable string 
    contenidoProductos += productos[i]+" "; 
 }
+**/
 
-fs.writeFileSync ('./precios.txt', contenidoPrecios); // guardo precios 
-fs.writeFileSync ('./productos.txt', contenidoProductos); //guardo productos
+fs.writeFileSync ('./precios.txt', cargarTxt(precios)); // guardo precios usando la funcion 
+fs.writeFileSync ('./productos.txt', cargarTxt(productos)); //guardo productos usando la funcion 
 
-//Leer informacion de txt
-const datosPrecios : string = fs.readFileSync ('./precios.txt' , 'utf8');
+//---------------FUNCION PARA LEER LOS TXT----------------//
+function leerTxt (blocNotas : string) : string[] {   
+    const datos : string = fs.readFileSync (blocNotas, 'utf8');   //leo .txt y lo asigno a datos
+    const datos2 : string = datos.trim();   //saca los espacios de adelante y de atras
+    const arrayNuevo : string[] = datos2.split(" ");    //creo un arreglo y cada item de la cadena se corta con los "espacios" " "  
+    return arrayNuevo ;    //retorno arreglo
+}
+
+console.log ("El arreglo Precios es : ",  leerTxt ('./precios.txt')); //muestro el txt
+console.log ("El arreglo Productos es : ", leerTxt ('./productos.txt'));  //muestro el txt
+
+//----------------- Leer informacion de txt sin modularizacion -------------------//
+/**const datosPrecios : string = fs.readFileSync ('./precios.txt' , 'utf8');
 const datosPrecios2 : string = datosPrecios.trim(); //saca los espacios de adelante y de atras
 const arrayPrecios : string[] = datosPrecios2.split(" "); //creo un arreglo y cada item de la cadena se corta con los "espacios" " "  
 console.log(arrayPrecios); //muestro el arreglo
@@ -34,6 +59,6 @@ console.log(arrayPrecios); //muestro el arreglo
 const datosProductos : string = fs.readFileSync ('./productos.txt' , 'utf8');
 const datosProductos2 : string = datosProductos.trim(); //saca los espacios de adelante y de atras
 const arrayProductos : string[] = datosProductos2.split(" "); //creo un arreglo y cada item de la cadena se corta con los "espacios" " "  
-console.log(arrayProductos); //muestro el arreglo
+console.log(arrayProductos); //muestro el arreglo */
 
 
